@@ -5,7 +5,7 @@ import UIKit
     N. Furkan Açıkgöz
  */
 
-// This enumeration is for defining names of each bootcamp.
+/// This enumeration is for defining names of each bootcamp.
 enum Name {
     case Arcelik
     case Todeb
@@ -33,7 +33,10 @@ class Participant {
 }
 
 extension Participant {
-    
+    /**
+        -Returns: String or nil depending on name and surname
+     variable's existence
+     */
     func getIdentity() -> String? {
         guard let name = name, let surname = surname else {
             print("Name and surname is not declared yet")
