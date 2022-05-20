@@ -76,3 +76,16 @@ extension Participant {
     }
     
 }
+
+struct Bootcamp {
+    private var name: Name?
+    private var code: Int?
+    private var participants: [Participant]?
+    private var nameOfAssistants: [String]?
+    private var nameOfTeacher: String? {
+        didSet{
+            participants = [Participant]()
+            nameOfAssistants = [String]()
+        }
+    }
+}
