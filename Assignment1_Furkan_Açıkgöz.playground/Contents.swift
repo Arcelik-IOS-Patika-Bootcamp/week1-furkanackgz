@@ -98,4 +98,20 @@ extension Bootcamp {
         self.nameOfTeacher = nameOfTeacher
     }
     
+    /**
+     Adds Participant or array of Participant depending on passed
+     participants parameter type.
+     
+     -parameter participants: Type is declared as Any to provide both
+     adding single or multiple Participants.
+     -returns: None
+     */
+    mutating func addParticipants(_ participants: Any) {
+        if participants is Participant {
+            self.participants?.append(participants as! Participant)
+        } else if participants is [Participant] {
+            self.participants?.append(contentsOf: participants as! [Participant])
+        }
+    }
+    
 }
