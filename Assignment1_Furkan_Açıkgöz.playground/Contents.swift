@@ -33,10 +33,11 @@ class Participant {
 }
 
 extension Participant {
+    
     /**
-        -Returns: String or nil depending on name and surname
-     variable's existence
-     */
+        -Returns: Identity String or nil depending on whether name
+     and surname variables initialized in Participant class.
+    */
     func getIdentity() -> String? {
         guard let name = name, let surname = surname else {
             print("Name and surname is not declared yet")
@@ -44,6 +45,22 @@ extension Participant {
         }
         
         return "Participant name is \(name) \(surname)"
+    }
+    
+    /**
+        -Returns: Enrolled Bootcamp String or nil depending on
+     whether codeOfBootcamp and nameOfBootcamp variables initialized
+     in Participant class.
+    */
+    func getEnrolledBootcamp() -> String? {
+        guard let codeOfBootcamp = codeOfBootcamp,
+              let nameOfBootcamp = nameOfBootcamp else {
+            print("Bootcamp is not declared yet")
+            return nil
+        }
+
+        return "Participant currently enrolled in " +
+        "\(codeOfBootcamp). \(nameOfBootcamp)"
     }
     
 }
