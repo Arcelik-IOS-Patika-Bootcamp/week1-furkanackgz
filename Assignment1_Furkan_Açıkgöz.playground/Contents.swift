@@ -31,3 +31,16 @@ class Participant {
         self.codeOfBootcamp = codeOfBootcamp
     }
 }
+
+extension Participant {
+    
+    func getIdentity() -> String? {
+        guard let name = name, let surname = surname else {
+            print("Name and surname is not declared yet")
+            return nil
+        }
+        
+        return "Participant name is \(name) \(surname)"
+    }
+    
+}
