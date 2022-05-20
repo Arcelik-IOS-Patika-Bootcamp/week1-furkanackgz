@@ -114,4 +114,20 @@ extension Bootcamp {
         }
     }
     
+    /**
+     Adds Assistant or array of Assistants depending on passed
+     participants parameter type.
+     
+     -parameter assistants: Type is declared as Any to provide both
+     adding single or multiple Assistants.
+     -returns: None
+     */
+    mutating func addAssistants(_ assistants: Any) {
+        if assistants is String {
+            self.nameOfAssistants?.append(assistants as! String)
+        } else if assistants is [String] {
+            self.nameOfAssistants?.append(contentsOf: assistants as! [String])
+        }
+    }
+    
 }
