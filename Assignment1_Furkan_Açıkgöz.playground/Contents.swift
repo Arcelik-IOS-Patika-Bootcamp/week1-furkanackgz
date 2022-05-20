@@ -63,4 +63,16 @@ extension Participant {
         "\(codeOfBootcamp). \(nameOfBootcamp)"
     }
     
+    /**
+        -Returns: Email String or nil depending on whether email
+     variable is initialized in Participant class.
+    */
+    func getEmail() -> String? {
+        guard let email = email else {
+            print("No e-mail address")
+            return nil
+        }
+        return email
+    }
+    
 }
