@@ -13,12 +13,12 @@ enum Name {
 }
 
 class Participant {
-    private var name: String?
-    private var surname: String?
-    private var email: String?
-    private var isSelected: Bool?
-    private var nameOfBootcamp: Name?
-    private var codeOfBootcamp: Int?
+    var name: String?
+    var surname: String?
+    var email: String?
+    var isSelected: Bool?
+    var nameOfBootcamp: Name?
+    var codeOfBootcamp: Int?
     
     init(name: String, surname: String, email:String,
          isSelected: Bool, nameOfBootcamp: Name,
