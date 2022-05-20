@@ -89,3 +89,13 @@ struct Bootcamp {
         }
     }
 }
+
+extension Bootcamp {
+    
+    mutating func setUpBootcamp(_ name: Name, _ code: Int, _ nameOfTeacher: String) {
+        self.name = name
+        self.code = code
+        self.nameOfTeacher = nameOfTeacher
+    }
+    
+}
