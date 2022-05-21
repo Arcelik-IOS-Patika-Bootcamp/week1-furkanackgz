@@ -43,15 +43,14 @@ extension Participant {
         -Returns: Enrolled Bootcamp String or nil depending on
      whether isSelected value is true or false in Participant class.
     */
-    func getEnrolledBootcamp() -> String? {
+    func getEnrolledBootcamp() -> String {
         
         if isSelected {
             return "Participant is enrolled in " +
-            "\(codeOfBootcamp). \(nameOfBootcamp)"
+            "\(codeOfBootcamp!). \(nameOfBootcamp!)"
         } else {
-            print("Participant is currently not involved in " +
-            "any Bootcamp!")
-            return nil
+            return "Participant is currently not involved in " +
+            "any Bootcamp!"
         }
     }
     
