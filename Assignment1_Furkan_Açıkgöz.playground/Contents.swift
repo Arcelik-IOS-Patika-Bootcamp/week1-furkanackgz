@@ -79,9 +79,9 @@ extension Participant {
 struct Bootcamp {
     var name: Name
     var code: Int
+    var nameOfTeacher: String
     var participants: [Participant] = []
     var namesOfAssistants: [String] = []
-    var nameOfTeacher: String
 }
 
 // Mutating methods of Bootcamp Struct
@@ -111,9 +111,7 @@ extension Bootcamp {
      */
     mutating func addMultiple(_ participants: [Participant]) {
         for participant in participants {
-            if !participant.isSelected {
-                self.participants.append(participant)
-            }
+            addSingle(participant)
         }
     }
     
