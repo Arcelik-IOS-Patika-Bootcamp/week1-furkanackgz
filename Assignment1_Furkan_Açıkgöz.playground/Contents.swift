@@ -78,11 +78,11 @@ extension Participant {
 }
 
 struct Bootcamp {
-    private var name: Name
-    private var code: Int
-    private var participants: [Participant]?
-    private var namesOfAssistants: [String]?
-    private var nameOfTeacher: String {
+    var name: Name
+    var code: Int
+    var participants: [Participant]?
+    var namesOfAssistants: [String]?
+    var nameOfTeacher: String {
         didSet{
             participants = [Participant]()
             namesOfAssistants = [String]()
