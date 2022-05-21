@@ -81,11 +81,11 @@ struct Bootcamp {
     private var name: Name
     private var code: Int
     private var participants: [Participant]?
-    private var nameOfAssistants: [String]?
+    private var namesOfAssistants: [String]?
     private var nameOfTeacher: String {
         didSet{
             participants = [Participant]()
-            nameOfAssistants = [String]()
+            namesOfAssistants = [String]()
         }
     }
 }
@@ -139,9 +139,50 @@ extension Bootcamp {
      */
     mutating func addAssistants(_ assistants: Any) {
         if assistants is String {
-            self.nameOfAssistants?.append(assistants as! String)
+            self.namesOfAssistants?.append(assistants as! String)
         } else if assistants is [String] {
-            self.nameOfAssistants?.append(contentsOf: assistants as! [String])
+            self.namesOfAssistants?.append(contentsOf: assistants as! [String])
+        }
+    }
+    
+}
+
+// Non-mutating methods of Bootcamp
+extension Bootcamp {
+    
+    func printNameOfBootcamp() {
+        print("\(code). \(name)")
+    }
+    
+    func printNameOfTeacher() {
+        print(nameOfTeacher)
+    }
+    
+    /**
+     If Assistans are assigned to the bootcamp print their name
+     one by one.
+     */
+    func printNamesOfAssistants() {
+        if let namesOfAssistants = namesOfAssistants {
+            for assistant in namesOfAssistants {
+                print(assistant)
+            }
+        } else {
+            print("There is no Assistant assigned to this bootcamp yet!")
+        }
+    }
+    
+    /**
+     If Participants are assigned to the bootcamp print their name
+     one by one.
+     */
+    func printNamesOfParticipants() {
+        if let participants = participants {
+            for index in 0..<participants.count {
+                print("\(index+1). \(participants[index].getIdentity())")
+            }
+        } else {
+            print("There is no Participants assigned to this bootcamp yet!")
         }
     }
     
