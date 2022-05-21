@@ -13,10 +13,10 @@ enum Name {
 }
 
 class Participant {
-    var name: String?
-    var surname: String?
-    var email: String?
-    var isSelected: Bool?
+    var name: String
+    var surname: String
+    var email: String
+    var isSelected: Bool
     var nameOfBootcamp: Name?
     var codeOfBootcamp: Int?
     
@@ -34,44 +34,27 @@ class Participant {
 
 extension Participant {
     
-    /**
-        -Returns: Identity String or nil depending on whether name
-     and surname variables initialized in Participant class.
-    */
-    func getIdentity() -> String? {
-        guard let name = name, let surname = surname else {
-            print("Name and surname is not declared yet")
-            return nil
-        }
-        
+    func getIdentity() -> String {
         return "Participant name is \(name) \(surname)"
     }
     
     /**
         -Returns: Enrolled Bootcamp String or nil depending on
-     whether codeOfBootcamp and nameOfBootcamp variables initialized
-     in Participant class.
+     whether isSelected value is true or false in Participant class.
     */
     func getEnrolledBootcamp() -> String? {
-        guard let codeOfBootcamp = codeOfBootcamp,
-              let nameOfBootcamp = nameOfBootcamp else {
-            print("Bootcamp is not declared yet")
+        
+        if isSelected {
+            return "Participant is enrolled in " +
+            "\(codeOfBootcamp). \(nameOfBootcamp)"
+        } else {
+            print("Participant is currently not involved in " +
+            "any Bootcamp!")
             return nil
         }
-
-        return "Participant currently enrolled in " +
-        "\(codeOfBootcamp). \(nameOfBootcamp)"
     }
     
-    /**
-        -Returns: Email String or nil depending on whether email
-     variable is initialized in Participant class.
-    */
-    func getEmail() -> String? {
-        guard let email = email else {
-            print("No e-mail address")
-            return nil
-        }
+    func getEmail() -> String {
         return email
     }
     
