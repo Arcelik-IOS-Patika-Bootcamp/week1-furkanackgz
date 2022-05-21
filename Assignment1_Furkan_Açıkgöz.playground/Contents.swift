@@ -70,7 +70,7 @@ extension Participant {
      
      returns: None
      */
-    func assignToGiven(_ nameOfBootcamp:String, _ codeOfBootcamp:Int) {
+    func assignToGiven(_ nameOfBootcamp:Name, _ codeOfBootcamp:Int) {
         self.nameOfBootcamp = nameOfBootcamp
         self.codeOfBootcamp = codeOfBootcamp
         self.isSelected = true
@@ -78,11 +78,11 @@ extension Participant {
 }
 
 struct Bootcamp {
-    private var name: Name?
-    private var code: Int?
+    private var name: Name
+    private var code: Int
     private var participants: [Participant]?
     private var nameOfAssistants: [String]?
-    private var nameOfTeacher: String? {
+    private var nameOfTeacher: String {
         didSet{
             participants = [Participant]()
             nameOfAssistants = [String]()
@@ -90,6 +90,7 @@ struct Bootcamp {
     }
 }
 
+// Mutating methods of Bootcamp Struct
 extension Bootcamp {
     
     mutating func setUpBootcamp(_ name: Name, _ code: Int, _ nameOfTeacher: String) {
@@ -99,18 +100,32 @@ extension Bootcamp {
     }
     
     /**
-     Adds Participant or array of Participant depending on passed
-     participants parameter type.
+     Add single Participant if it's not enrolled to other bootcamps
+     previously.
      
-     -parameter participants: Type is declared as Any to provide both
-     adding single or multiple Participants.
      -returns: None
      */
-    mutating func addParticipants(_ participants: Any) {
-        if participants is Participant {
-            self.participants?.append(participants as! Participant)
-        } else if participants is [Participant] {
-            self.participants?.append(contentsOf: participants as! [Participant])
+    mutating func addSingle(_ participant:Participant) {
+        if !participant.isSelected {
+            participant.assignToGiven(name, code)
+            self.participants?.append(participant)
+        } else {
+            print("Given participant is already enrolled to any other" +
+            "Bootcamp")
+        }
+    }
+    
+    /**
+     Add multiple Participants if they are not enrolled to other bootcamps
+     previously.
+     
+     -returns: None
+     */
+    mutating func addMultiple(_ participants: [Participant]) {
+        for participant in participants {
+            if !participant.isSelected {
+                self.participants?.append(participant)
+            }
         }
     }
     
