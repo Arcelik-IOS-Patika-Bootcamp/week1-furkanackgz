@@ -79,24 +79,13 @@ extension Participant {
 struct Bootcamp {
     var name: Name
     var code: Int
-    var participants: [Participant]?
-    var namesOfAssistants: [String]?
-    var nameOfTeacher: String {
-        didSet{
-            participants = [Participant]()
-            namesOfAssistants = [String]()
-        }
-    }
+    var participants: [Participant] = []
+    var namesOfAssistants: [String] = []
+    var nameOfTeacher: String
 }
 
 // Mutating methods of Bootcamp Struct
 extension Bootcamp {
-    
-    mutating func setUpBootcamp(_ name: Name, _ code: Int, _ nameOfTeacher: String) {
-        self.name = name
-        self.code = code
-        self.nameOfTeacher = nameOfTeacher
-    }
     
     /**
      Add single Participant if it's not enrolled to other bootcamps
@@ -107,9 +96,9 @@ extension Bootcamp {
     mutating func addSingle(_ participant:Participant) {
         if !participant.isSelected {
             participant.assignToGiven(name, code)
-            self.participants?.append(participant)
+            self.participants.append(participant)
         } else {
-            print("Given participant is already enrolled to any other" +
+            print("Given participant is already enrolled to other " +
             "Bootcamp")
         }
     }
@@ -123,7 +112,7 @@ extension Bootcamp {
     mutating func addMultiple(_ participants: [Participant]) {
         for participant in participants {
             if !participant.isSelected {
-                self.participants?.append(participant)
+                self.participants.append(participant)
             }
         }
     }
@@ -138,9 +127,9 @@ extension Bootcamp {
      */
     mutating func addAssistants(_ assistants: Any) {
         if assistants is String {
-            self.namesOfAssistants?.append(assistants as! String)
+            self.namesOfAssistants.append(assistants as! String)
         } else if assistants is [String] {
-            self.namesOfAssistants?.append(contentsOf: assistants as! [String])
+            self.namesOfAssistants.append(contentsOf: assistants as! [String])
         }
     }
     
@@ -162,7 +151,8 @@ extension Bootcamp {
      one by one.
      */
     func printNamesOfAssistants() {
-        if let namesOfAssistants = namesOfAssistants {
+        if namesOfAssistants.count > 0 {
+            print("-> Assistant Names:")
             for assistant in namesOfAssistants {
                 print(assistant)
             }
@@ -176,7 +166,8 @@ extension Bootcamp {
      one by one.
      */
     func printNamesOfParticipants() {
-        if let participants = participants {
+        if participants.count > 0 {
+            print("-> Participant Names:")
             for index in 0..<participants.count {
                 print("\(index+1). \(participants[index].getIdentity())")
             }
