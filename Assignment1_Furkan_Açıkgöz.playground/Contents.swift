@@ -32,6 +32,7 @@ class Participant {
     }
 }
 
+// Getter methods of Participant
 extension Participant {
     
     func getIdentity() -> String {
@@ -58,6 +59,22 @@ extension Participant {
         return email
     }
     
+}
+
+// Setter methods of Participant
+extension Participant {
+    
+    /**
+     After assigning name and code of the Bootcamp, we change isSelected
+     value from false to true.
+     
+     returns: None
+     */
+    func assignToGiven(_ nameOfBootcamp:String, _ codeOfBootcamp:Int) {
+        self.nameOfBootcamp = nameOfBootcamp
+        self.codeOfBootcamp = codeOfBootcamp
+        self.isSelected = true
+    }
 }
 
 struct Bootcamp {
