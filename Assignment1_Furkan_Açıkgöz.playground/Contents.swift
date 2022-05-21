@@ -21,8 +21,8 @@ class Participant {
     var codeOfBootcamp: Int?
     
     init(name: String, surname: String, email:String,
-         isSelected: Bool, nameOfBootcamp: Name,
-         codeOfBootcamp: Int) {
+         isSelected: Bool, nameOfBootcamp: Name?,
+         codeOfBootcamp: Int?) {
         self.name = name
         self.surname = surname
         self.email = email
