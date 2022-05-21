@@ -177,3 +177,35 @@ extension Bootcamp {
     }
     
 }
+
+// Initializing the Bootcamp
+var arcelikBootcamp = Bootcamp(name: .Arcelik, code: 184, nameOfTeacher: "Mücahit Katırcı")
+arcelikBootcamp.printNameOfBootcamp()
+arcelikBootcamp.printNameOfTeacher()
+
+// Adding Assistants
+arcelikBootcamp.addAssistants("İsmail Palalı")
+arcelikBootcamp.addAssistants(["Özgün Aksay","Ali Şen"])
+// Printing Assistan names
+arcelikBootcamp.printNamesOfAssistants()
+
+// Creating Participants
+var participant1 = Participant(name: "Furkan", surname: "Açıkgöz", email: "furkanackgz99@gmail.com", isSelected: false, nameOfBootcamp: nil, codeOfBootcamp: nil)
+
+var participant2 = Participant(name: "Ahmet", surname: "Gültekin", email: "ahmetgultekin@gmail.com", isSelected: true, nameOfBootcamp: .Enuygun, codeOfBootcamp: 180)
+
+var participant3 = Participant(name: "Kürşad", surname: "Cüce", email: "kursatcuce@gmail.com", isSelected: false, nameOfBootcamp: nil, codeOfBootcamp: nil)
+
+var participant4 = Participant(name: "Enes", surname: "Aslan", email: "enesaslan@gmail.com", isSelected: false, nameOfBootcamp: nil, codeOfBootcamp: nil)
+
+// Adding Participants
+arcelikBootcamp.addSingle(participant1)
+
+// Trying to add Participant who is already assigned to other Bootcamp
+arcelikBootcamp.addSingle(participant2)
+
+// Adding multiple Participants
+arcelikBootcamp.addMultiple([participant3,participant4])
+
+// Printing Participant names
+arcelikBootcamp.printNamesOfParticipants()
